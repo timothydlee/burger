@@ -18,45 +18,15 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // Override with POST having ?_method=DELETE
 app.use(methodOverride("_method"));
-app.engine("handlebars", exphbs({ 
-	defaultLayout: "main" 
-}));
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-// app.get("/", function(req, res) {
-//   connection.query("SELECT * FROM movies;", function(err, data) {
-//     if (err) throw err;
-//     res.render("index", { movies: data });
-//   });
-// });
+// Import routes and give the server access to them.
+var routes = require("./controllers/burgers_controller.js");
 
-// app.post("/create", function(req, res) {
-//   connection.query("INSERT INTO movies (movie) VALUES (?)", [req.body.plan], function(err, result) {
-//     if (err) throw err;
-//     res.redirect("/");
-//   });
-// });
-
-// app.delete("/delete", function(req, res) {
-//   connection.query("DELETE FROM movies WHERE id = ?", [req.body.id], function(err, result) {
-//     if (err) throw err;
-//     res.redirect("/");
-//   });
-// });
-
-// app.put("/update", function(req, res) {
-//   connection.query("UPDATE plans SET movie = ? WHERE id = ?", [
-//     req.body.plan, req.body.id
-//   ], function(err, result) {
-//     if (err) throw err;
-//     res.redirect("/");
-//   });
-// });
-// var routes = require ("./app/controllers/burgers_controller.js");
-// app.use ("/", routes);
+app.use("/", routes);
 
 var port = process.env.port || 3000;
 app.listen(port, function() {
 	console.log("Listening to port: " + port);
 });
-
