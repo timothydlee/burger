@@ -1,3 +1,12 @@
+body {
+	background-color: #D8315B;
+	color: #0A2463;
+}
+
+button {
+	color: #0A2463;
+}
+
 /*li {
   background: #FAEBD7;
   margin: 5px;
