@@ -1,5 +1,5 @@
 var mysql 	= require("mysql");
-var keys 	= require("./keys.js");
+// var keys 	= require("./keys.js");
 
 var connection = mysql.createConnection({
 	port: 3306,
